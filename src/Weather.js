@@ -15,12 +15,12 @@ export default function Weather(props) {
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
+      iconUrl: `http://openweathermap.org/img/wn/{response.data.weather[0].icon}@2x.png`,
     });
   }
 
   function search() {
-    const apiKey = "d0e248fece5440190037a1916c099109";
+    const apiKey = "47b212bac8b31fde67977395522092e6";
     let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
