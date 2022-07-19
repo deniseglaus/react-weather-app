@@ -4,9 +4,7 @@ import "./WeatherForecast.css";
 import axios from "axios";
 
 export default function WeatherForecast(props) {
-  function handleResponse(response) {
-    console.log(response.data);
-  }
+  function handleResponse(response) {}
 
   let apiKey = "47b212bac8b31fde67977395522092e6";
   let longitude = props.coordinates.lon;
