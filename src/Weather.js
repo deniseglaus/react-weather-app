@@ -7,9 +7,11 @@ import WeatherForecast from "./WeatherForecast";
 export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
   const [weatherData, setweatherData] = useState({ ready: false });
+  
   function handleResponse(response) {
     setweatherData({
       ready: true,
+      coordinates:response.data.coord
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
@@ -26,10 +28,10 @@ export default function Weather(props) {
     axios.get(apiUrl).then(handleResponse);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    search();
-  }
+https: function handleSubmit(event) {
+  event.preventDefault();
+  search();
+}
 
   function handleCityChange(event) {
     setCity(event.target.value);
@@ -59,7 +61,7 @@ export default function Weather(props) {
           </div>
         </form>
         <WeatherInfo data={weatherData} />
-        <WeatherForecast />
+        <WeatherForecast coord={weatherData.coordinates/>
       </div>
     );
   } else {
